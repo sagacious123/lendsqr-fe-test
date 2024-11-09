@@ -27,9 +27,11 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface SideBarComponentProps {
   page?: string | null;
+  isModalOpen?: boolean;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SideBarComponent: React.FC<SideBarComponentProps> = ({ page }) => {
+export const SideBarComponent: React.FC<SideBarComponentProps> = ({ page, isModalOpen }) => {
   const pageSplit = page ? page.split("/") : [];
 
   // useEffect(() => {
@@ -42,7 +44,7 @@ export const SideBarComponent: React.FC<SideBarComponentProps> = ({ page }) => {
   return (
     <aside
       // className={`sidebar position-fixed bg-white py-4 px-4 h-100 border-end ${className}`}
-      className="sidebar"
+      className={isModalOpen ? "sidebar active" : "sidebar"}
       onClick={(e: React.SyntheticEvent) => {
         e.stopPropagation();
       }}

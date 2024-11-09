@@ -81,3 +81,15 @@
     background-color: var(--error-50);
   }
 }
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 90%;
+    transform: translateX(-100%);
+    transition: 0.2s linear;
+
+    &.active {
+      transform: translate(0);
+    }
+  }
+}

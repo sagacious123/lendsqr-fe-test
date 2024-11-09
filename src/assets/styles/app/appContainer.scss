@@ -204,3 +204,87 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .app
+    .app-main
+    .app-main-container
+    .app-right
+    .app-user-details-page
+    .user-details-white-box
+    .user-details-group
+    .user-details-group-container {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 1020px) {
+  .app .app-main .app-main-container .app-right {
+    .metrics {
+      grid-template-columns: repeat(4, 250px);
+      overflow-x: auto;
+    }
+  }
+}
+@media (max-width: 900px) {
+  .app {
+    .app-main .app-main-container {
+      .app-right {
+        width: 100%;
+        left: 0;
+        .metrics {
+          grid-template-columns: repeat(4, 250px);
+          overflow-x: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .app .app-main .app-main-container .app-right {
+    .metrics {
+      grid-template-columns: repeat(4, 100%);
+    }
+  }
+  .app
+    .app-main
+    .app-main-container
+    .app-right
+    .app-user-details-page
+    .user-details-header {
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+
+  .app
+    .app-main
+    .app-main-container
+    .app-right
+    .app-user-details-page
+    .user-details-white-box
+    .user-details-top-box-container {
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+
+    .tier,
+    .account-info {
+      padding: 0;
+      border: none;
+    }
+  }
+
+  .app
+    .app-main
+    .app-main-container
+    .app-right
+    .app-user-details-page
+    .user-details-white-box
+    .user-details-group
+    .user-details-group-container {
+    grid-template-columns: repeat(1, auto);
+  }
+}

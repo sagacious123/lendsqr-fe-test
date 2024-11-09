@@ -124,6 +124,15 @@
       }
     }
   }
+  .menu-btn {
+    background-color: transparent;
+    border: none;
+  }
+  .menu-item {
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 0.88rem;
+  }
 }
 //==== END OF TABLE COMPONENT ====/
 
@@ -255,3 +264,20 @@
   }
 }
 //==== END OF TAB NAVIGATION ====//
+
+@media (max-width: 1160px) {
+  .tab-navigation {
+    overflow-x: auto;
+  }
+}
+@media (max-width: 900px) {
+  .searchbar {
+    width: 100%;
+  }
+}
+// @media (max-width: 800px) {
+//   .tab-navigation {
+//     overflow-x: auto;
+//   }
+
+// }

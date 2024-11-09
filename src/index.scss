@@ -15,10 +15,6 @@
   --primary-yellow: #e9b200;
   --primary-green: #39cdcc;
 
-  --danger-button-border: #ab3535;
-  --primary-button-border: #0d2972;
-  --secondary-button-border: #071d55;
-
   --upgrade-button-bg: #cde53d;
   --upgrade-button-border: #9eb031;
 
@@ -87,6 +83,16 @@
   font-family: "avenir-next";
   src: url("/assets/fonts/AvenirNextLTPro-HeavyCn.otf");
   font-weight: 800;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 50px;
 }
 
 * {

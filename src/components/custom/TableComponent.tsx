@@ -8,12 +8,20 @@ import {
   Td,
   TableContainer,
   Spinner,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
 } from "@chakra-ui/react";
 import { ReactComponent as FilterIcon } from "assets/images/filter-results-button.svg";
 import { SetStateAction, useState } from "react";
 import { Pagination } from ".";
 import { ReactComponent as VerticalEllipsesIcon } from "assets/images/vertical-ellipses.svg";
-import { Link } from "react-router-dom";
+import { ReactComponent as EyeIcon } from "assets/images/eye.svg";
+import { ReactComponent as ActivateUserIcon } from "assets/images/activate-user.svg";
+import { ReactComponent as BlacklistUserIcon } from "assets/images/blacklist-user.svg";
+import { Link, useNavigate } from "react-router-dom";
 import { User } from "store/auth";
 
 interface ColumnConfig {
@@ -47,7 +55,7 @@ export const TableComponent: React.FC<TableComponentProps> = ({
   paginate,
   tableContainerClassName,
 }) => {
-  console.log("data", data);
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -115,9 +123,44 @@ export const TableComponent: React.FC<TableComponentProps> = ({
                           ))}
                           {showActions && (
                             <Td>
-                              <button className="self-start me-4">
-                                <VerticalEllipsesIcon className="h-4 w-4" />
-                              </button>
+                              <Menu>
+                                <MenuButton
+                                  as={IconButton}
+                                  aria-label="Options"
+                                  className="menu-btn"
+                                  icon={
+                                    <VerticalEllipsesIcon className="h-4 w-4" />
+                                  }
+                                  variant="outline"
+                                />
+                                <MenuList>
+                                  <MenuItem
+                                    className="menu-item"
+                                    icon={<EyeIcon />}
+                                    onClick={() => {
+                                      handleSetUserToLocalStorage(item as User);
+                                      navigate("/users/" + item.id);
+                                    }}
+                                  >
+                                    View Details
+                                  </MenuItem>
+                                  <MenuItem
+                                    className="menu-item"
+                                    icon={<BlacklistUserIcon />}
+                                  >
+                                    Blacklist User
+                                  </MenuItem>
+                                  <MenuItem
+                                    className="menu-item"
+                                    icon={<ActivateUserIcon />}
+                                  >
+                                    Activate User
+                                  </MenuItem>
+                                </MenuList>
+                              </Menu>
+                              {/* <button className="self-start me-4">
+                                
+                              </button> */}
                             </Td>
                           )}
                         </Tr>

@@ -5,7 +5,7 @@ import { useAuth } from "store/auth";
 import { SideBarComponent, HeaderComponent } from ".";
 
 export const AppContainer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, token: access_token } = useAuth();
   const navigate = useNavigate();
   const match = useMatch("/exporter/*");
@@ -22,7 +22,10 @@ export const AppContainer = () => {
   return (
     <div className="app">
       {/*========== HEADER =========== */}
-      <HeaderComponent hamburger={isOpen} setHamburger={setIsOpen} />
+      <HeaderComponent
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
       {/*========== END OF HEADER =========== */}
 
       <section className="app-main" style={{ minHeight: "100vh" }}>
@@ -33,7 +36,11 @@ export const AppContainer = () => {
             >
               <HiMenuAlt2 className="header-menu-icon" />
             </button> */}
-          <SideBarComponent page={page} />
+          <SideBarComponent
+            page={page}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
           {/* </div> */}
           <div className="app-right bg-grey-50" style={{ minHeight: "100vh" }}>
             <div className="pt-2 h-100">

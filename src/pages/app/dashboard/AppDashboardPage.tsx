@@ -41,7 +41,12 @@ export const AppDashboardPage = () => {
             value: (users?.filter((u) => u.isOnSavings).length as number) || 0,
           },
         ].map((item, index) => (
-          <MetricsCard icon={item.icon} title={item.title} value={item.value} />
+          <MetricsCard
+            key={index}
+            icon={item.icon}
+            title={item.title}
+            value={item.value}
+          />
         ))}
       </div>
       <div className="app-dashboard-table-container">
