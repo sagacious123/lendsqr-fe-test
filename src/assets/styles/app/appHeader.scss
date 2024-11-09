@@ -1,0 +1,60 @@
+.app-header {
+  height: 100px;
+  position: sticky;
+  right: 0;
+  top: 0;
+  background-color: white;
+  z-index: 999;
+  width: 100%;
+  //   padding-left: 30px;
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 0px 20px 0px #0000000a;
+
+  .app-header-container {
+    max-width: 1500px;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .app-logo-container {
+      width: 283px;
+    }
+
+    .app-header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      padding: 0 20px;
+
+      .app-header-user-actions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        a {
+          text-decoration: underline;
+          color: var(--primary-blue);
+          font-size: 1rem;
+          font-weight: 400;
+          margin-right: 20px;
+        }
+
+        .app-header-user-details {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+        }
+      }
+    }
+  }
+}
