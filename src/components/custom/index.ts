@@ -6,3 +6,4 @@ export * from "./TableComponent";
 export * from "./Pagination";
 export * from "./BackLink";
 export * from "./TabNavigation";
+export * from "./PrimaryLoader";

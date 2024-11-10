@@ -1,11 +1,12 @@
 // import { PrimaryLoader } from "components";
+import { PrimaryLoader } from "components/custom";
 import { useGeneralAppProvider } from "providers";
 import { useEffect, useState } from "react";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "store/auth";
 
 export const AuthVerifyContainer = () => {
-  const { user } = useAuth();
+  const { isLoading } = useAuth();
   const { primaryLoading } = useGeneralAppProvider();
 
   // useEffect(() => {
@@ -30,7 +31,7 @@ export const AuthVerifyContainer = () => {
 
   return (
     <>
-      {/* {primaryLoading && <PrimaryLoader height={"90vh"} />} */}
+      {primaryLoading && <PrimaryLoader height={"90vh"} />}
       <Outlet />
     </>
   );

@@ -14,11 +14,8 @@ import PabloIllustration from "assets/images/pablo-sign-in.svg";
 import { PrimaryButton } from "components/buttons";
 
 export const LoginPage = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [request, { isLoading }] = useLoginMutation();
-  const { initNotification } = usePageNotificationProvider();
+  const [isLoading, setIsLoading] = useState(false);
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
@@ -30,8 +27,12 @@ export const LoginPage = () => {
     });
 
   const initLoginRequest = (payload?: LoginPayload) => {
-    navigate("/dashboard");
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000);
   };
+
   return (
     <div className="login min-h-[100vh]">
       <Link to="#" className="navbar-brand">

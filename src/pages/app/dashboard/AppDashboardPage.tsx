@@ -4,7 +4,7 @@ import UsersMetricIcon from "assets/images/users-metric.svg";
 import ActiveUsersMetricIcon from "assets/images/active-users-metric.svg";
 import UsersWithLoanMetricIcon from "assets/images/users-with-loan-metric.svg";
 import UsersWithSavingsMetricIcon from "assets/images/users-with-savings-metric.svg";
-import { Badge, TableComponent } from "components";
+import { Badge, PrimaryLoader, TableComponent } from "components";
 import moment from "moment";
 import { useGetAllUsersQuery, UsersList } from "store/users";
 
@@ -13,6 +13,7 @@ export const AppDashboardPage = () => {
 
   return (
     <section className="app-dashboard-page px-3">
+      {isLoading && <PrimaryLoader height={"90vh"} />}
       <div className="">
         <h1 className="app-page-heading">Dashboard</h1>
       </div>

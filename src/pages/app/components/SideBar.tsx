@@ -31,40 +31,20 @@ interface SideBarComponentProps {
   setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SideBarComponent: React.FC<SideBarComponentProps> = ({ page, isModalOpen }) => {
+export const SideBarComponent: React.FC<SideBarComponentProps> = ({
+  page,
+  isModalOpen,
+  setIsModalOpen,
+}) => {
   const pageSplit = page ? page.split("/") : [];
-
-  // useEffect(() => {
-  //   document.addEventListener("click", () => {
-  //     close!(false);
-  //   });
-  //   return () => document.removeEventListener("click", () => {});
-  // }, []);
 
   return (
     <aside
-      // className={`sidebar position-fixed bg-white py-4 px-4 h-100 border-end ${className}`}
       className={isModalOpen ? "sidebar active" : "sidebar"}
       onClick={(e: React.SyntheticEvent) => {
         e.stopPropagation();
       }}
     >
-      {/* <div className="">
-        <Link to="/">
-          <img src={Logo} alt="Logo" />
-        </Link>
-      </div> */}
-
-      {/* <div className="d-flex flex-row justify-content-between align-items-center mb-5">
-          <h4>Logo</h4>
-          <IconButton
-            aria-label="Close"
-            icon={<HamburgerClose />}
-            border={"none"}
-            bg={"transparent"}
-            onClick={() => close!(false)}
-          />
-        </div> */}
       <button className="organization-switch">
         <OrganizationIcon />
         <span>Switch Organization</span>
@@ -83,6 +63,7 @@ export const SideBarComponent: React.FC<SideBarComponentProps> = ({ page, isModa
                   return isActive ? "navlink active" : "navlink";
                 }}
                 to={item.to}
+                onClick={() => setIsModalOpen!((prev) => !prev)}
               >
                 {pageSplit[0] === item.to ? item.iconActive : item.icon}
                 <div className="nav-text">{item.label}</div>

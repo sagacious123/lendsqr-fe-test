@@ -23,7 +23,7 @@
     justify-content: space-between;
 
     .app-logo-container {
-      width: 283px;
+      width: calc(283px - 36px);
     }
 
     .app-header-right {
@@ -31,7 +31,7 @@
       align-items: center;
       justify-content: space-between;
       flex-grow: 1;
-      padding: 0 20px;
+      padding: 0 14px 0 50px;
       gap: 20px;
 
       .app-header-user-icon {
@@ -82,7 +82,7 @@
   .app-header {
     .app-header-container {
       .app-logo-container {
-        width: auto;
+        width: 120px;
       }
 
       .app-header-right {

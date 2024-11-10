@@ -92,8 +92,6 @@ export const Badge: React.FC<BadgeProps> = ({
     return className;
   };
 
-  console.log(scheme, "outtttt");
-
   return (
     <span className={`badge ${getSolidBadgeBgAndTextColors(scheme)}`}>
       {icon ? icon : null}

@@ -65,3 +65,32 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .login {
+    display: block;
+    overflow: auto;
+    padding: 5rem 0;
+    .navbar-brand {
+      position: relative;
+      padding: 0.6rem;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .login-left {
+      display: none;
+    }
+    .login-right {
+      box-shadow: unset;
+      .auth-header-title {
+        text-align: center;
+        font-size: 2rem !important;
+      }
+      .auth-header-subtitle {
+        text-align: center;
+        font-size: 1rem !important;
+      }
+    }
+  }
+}
