@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginValidationSchema } from "validations/auth";
-import { usePageNotificationProvider } from "providers/PageNotificationProvider";
+import { usePageNotificationProvider } from "providers/pageNotificationProvider";
 import { LoginPayload } from "store/auth";
 import Logo from "assets/images/logo.svg";
 import PabloIllustration from "assets/images/pablo-sign-in.svg";
