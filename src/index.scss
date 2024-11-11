@@ -300,11 +300,13 @@ button {
   font-size: 1rem;
   font-weight: 400;
   color: var(--primary-text);
+  opacity: 0.6;
 }
 
 .primary-input:focus ~ label,
 .primary-select:focus ~ label {
   color: var(--primary-green);
+  opacity: 1;
 }
 
 .primary-input:focus ~ label,
@@ -318,6 +320,7 @@ button {
   background-color: #fff;
   padding: 0 3px;
   line-height: normal;
+  opacity: 1;
 }
 
 .primary-input[aria-invalid="true"]:focus ~ label,
@@ -329,6 +332,7 @@ button {
 .primary-select[aria-invalid="true"]:not(:placeholder-shown) ~ label,
 .primary-select[data-invalid]:not(:placeholder-shown) ~ label {
   color: var(--primary-red);
+  opacity: 1;
 }
 
 .primary-input:not(:focus)::placeholder {

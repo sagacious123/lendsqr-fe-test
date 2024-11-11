@@ -3,7 +3,7 @@ import Logo from "assets/images/logo.svg";
 
 import UserIcon from "assets/images/user-img.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth, User } from "store/auth";
+import { useAuth } from "store/auth";
 import { ReactComponent as NotificationIcon } from "assets/images/notification.svg";
 import { SearchBar } from "components/custom";
 import { BsCaretDownFill } from "react-icons/bs";
