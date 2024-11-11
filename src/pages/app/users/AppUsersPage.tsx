@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MetricsCard } from "../components";
 import UsersMetricIcon from "assets/images/users-metric.svg";
 import ActiveUsersMetricIcon from "assets/images/active-users-metric.svg";
@@ -7,7 +7,7 @@ import UsersWithSavingsMetricIcon from "assets/images/users-with-savings-metric.
 import { Badge, PrimaryLoader, TableComponent } from "components";
 import moment from "moment";
 import { useGetAllUsersQuery, UsersList } from "store/users";
-import { useGeneralAppProvider } from "providers/generalAppProvider";
+import { useGeneralAppProvider } from "providers/GeneralAppProvider";
 
 export const AppUsersPage = () => {
   const { data: users, isLoading } = useGetAllUsersQuery({});

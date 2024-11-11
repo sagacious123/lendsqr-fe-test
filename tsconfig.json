@@ -27,7 +27,6 @@
       "containers/*": ["containers/*"],
       "providers/*": ["providers/*"],
       "store/*": ["store/*"],
-      "tables/*": ["tables/*"]
     }
   },
   "include": ["src"]

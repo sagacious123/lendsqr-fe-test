@@ -12,15 +12,20 @@
     position: absolute;
     width: 40%;
     z-index: 500;
-    padding: 5.5rem 0px 0px 5rem;
+    padding: 6.5rem 0px 0px 5rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     // margin: 0px;
+
+    img {
+      width: 173px;
+      height: auto;
+    }
   }
   .login-left {
-    padding: 1rem 1.25rem;
+    padding: 1rem 0;
     max-width: 600px;
     width: 100%;
     margin: auto;
@@ -31,7 +36,7 @@
     display: flex;
     align-items: center;
     .login-form-wrapper {
-      padding: 1rem 1.25rem;
+      padding: 1rem 0;
       max-width: 447px;
       width: 100%;
       margin: auto;
@@ -51,10 +56,11 @@
         }
       }
       .login-input {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
       .forgot-password {
-        margin-bottom: 24px;
+        margin-bottom: 26px;
+        line-height: normal;
         a {
           color: var(--primary-green);
           font-size: 0.75rem;
@@ -77,12 +83,18 @@
       width: 100%;
       justify-content: center;
       margin-bottom: 2rem;
+      img {
+        width: auto;
+        height: auto;
+      }
     }
     .login-left {
       display: none;
+      padding: 1rem 1.25rem;
     }
     .login-right {
       box-shadow: unset;
+      padding: 1rem 1.25rem;
       .auth-header-title {
         text-align: center;
         font-size: 2rem !important;

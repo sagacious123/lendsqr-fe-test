@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Logo from "assets/images/logo.svg";
 
 import UserIcon from "assets/images/user-img.svg";
-import { Link } from "react-router-dom";
-import { useAuth } from "store/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth, User } from "store/auth";
 import { ReactComponent as NotificationIcon } from "assets/images/notification.svg";
 import { SearchBar } from "components/custom";
 import { BsCaretDownFill } from "react-icons/bs";
-import { IconButton } from "@chakra-ui/react";
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 interface HeaderComponentProps {
@@ -19,8 +25,14 @@ export const HeaderComponent = ({
   isModalOpen,
   setIsModalOpen,
 }: HeaderComponentProps) => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const profileImage = user?.image ?? UserIcon;
+
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    navigate("/login");
+  };
 
   return (
     <header className="app-header">
@@ -40,21 +52,32 @@ export const HeaderComponent = ({
               <button className="notification-btn">
                 <NotificationIcon />
               </button>
+
               <div className="app-header-user-details">
                 <div className="app-header-user-icon">
                   <img
                     src={profileImage}
                     alt={"Avatar"}
-                    className="rounded rounded-circle"
                     style={{
                       objectFit: "cover",
                       objectPosition: "top",
                     }}
                   />
                 </div>
-                <button className="text-grey-900 fw-400">
-                  Adedeji <BsCaretDownFill />
-                </button>
+                <Menu>
+                  <MenuButton
+                    as={IconButton}
+                    aria-label="Options"
+                    className="menu-btn"
+                  >
+                    Adedeji <BsCaretDownFill />
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem className="menu-item" onClick={handleLogout}>
+                      Log out
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
               </div>
             </div>
             <IconButton

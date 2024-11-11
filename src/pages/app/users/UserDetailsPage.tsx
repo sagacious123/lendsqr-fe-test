@@ -13,9 +13,6 @@ export const UserDetailsPage = () => {
   );
   const profileImage = currentViewedUser?.image || UserIcon;
 
-  // const handleClearUserFromLocalStorage = () => {
-  //   localStorage.removeItem("currentViewedUser");
-  // };
   return (
     <section className="app-user-details-page px-3">
       <BackLink
@@ -170,6 +167,7 @@ export const UserDetailsPage = () => {
             </div>
             {currentViewedUser?.guarantor[1] && (
               <div className="user-details-group">
+                <h4>Guarantor</h4>
                 <div className="user-details-group-container">
                   {Object.keys(guarantorInfoKeys).map((key) => (
                     <div className="user-single-detail" key={key}>

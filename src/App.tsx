@@ -1,5 +1,5 @@
 import { RootNavigator } from "navigations";
-import { GeneralAppProvider } from "providers/generalAppProvider";
+import { GeneralAppProvider } from "providers/GeneralAppProvider";
 import { ChakraProviderLoader } from "./providers";
 
 function App() {

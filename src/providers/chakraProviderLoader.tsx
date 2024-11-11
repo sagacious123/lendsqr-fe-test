@@ -5,7 +5,7 @@ import { chakraCustomTheme } from "./chakra.config";
 
 const emotionCache = createCache({
   key: "emotion-css-cache",
-  prepend: true, // ensures styles are prepended to the <head>, instead of appended
+  prepend: true,
 });
 
 export const ChakraProviderLoader: React.FC<{

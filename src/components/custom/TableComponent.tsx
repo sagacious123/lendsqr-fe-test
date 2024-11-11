@@ -29,7 +29,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { User } from "store/auth";
 import { PrimaryButton } from "components/buttons";
 import { useFormik } from "formik";
-import { UsersList } from "store/users";
 
 interface ColumnConfig {
   key: string;
@@ -48,6 +47,7 @@ interface TableComponentProps {
   style?: React.CSSProperties;
   paginate?: boolean;
   tableContainerClassName: string;
+  handleDataFilter?: (values: Record<string, any>) => void;
 }
 
 export const TableComponent: React.FC<TableComponentProps> = ({
@@ -61,16 +61,21 @@ export const TableComponent: React.FC<TableComponentProps> = ({
   style,
   paginate,
   tableContainerClassName,
+  handleDataFilter,
 }) => {
   const navigate = useNavigate();
   const initRef = useRef<any>();
 
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [currentItems, setCurrentItems] = useState<Record<string, any>[]>([]);
   const [itemsPerPage, setItemsPerPage] = useState("10");
-  const indexOfLastItem = currentPage * Number(itemsPerPage);
-  const indexOfFirstItem = indexOfLastItem - Number(itemsPerPage);
-  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    const indexOfLastItem = currentPage * Number(itemsPerPage);
+    const indexOfFirstItem = indexOfLastItem - Number(itemsPerPage);
+
+    setCurrentItems(data?.slice(indexOfFirstItem, indexOfLastItem));
+  }, [currentPage, data, itemsPerPage]);
 
   const handleSetUserToLocalStorage = (user: User) => {
     localStorage.setItem("currentViewedUser", JSON.stringify(user));
@@ -86,27 +91,88 @@ export const TableComponent: React.FC<TableComponentProps> = ({
       phoneNumber: "",
       status: "",
     },
-    onSubmit: () => handleDataFilter(),
+    onSubmit: (vals) => handleDataFilter && handleDataFilter(vals),
   });
 
   useEffect(() => {
     setFilteredData(currentItems);
-  }, [currentItems]);
+    // let returnedData = currentItems?.filter(
+    //   (item: Record<string, any>) =>
+    //     item.organization
+    //       .toLowerCase()
+    //       .includes(values.organization.toLowerCase()) ||
+    //     item.fullName.toLowerCase().includes(values.username.toLowerCase()) ||
+    //     item.emailAddress.toLowerCase().includes(values.email.toLowerCase()) ||
+    //     item.createdAt.toLowerCase().includes(values.date.toLowerCase()) ||
+    //     item.phoneNumber
+    //       .toLowerCase()
+    //       .includes(values.phoneNumber.toLowerCase()) ||
+    //     item.userStatus.toLowerCase() === values.status.toLowerCase()
+    // );
 
-  const handleDataFilter = () => {
-    let returnedData = currentItems.filter(
-      (item: Record<string, any>) =>
-        item.organization
-          .toLowerCase()
-          .includes(values.organization.toLowerCase()) ||
-        item.username.toLowerCase().includes(values.username.toLowerCase()) ||
-        item.email.toLowerCase().includes(values.email.toLowerCase()) ||
-        item.date.includes(values.date) ||
-        item.phoneNumber.includes(values.phoneNumber) ||
-        item.status.toLowerCase().includes(values.status.toLowerCase())
-    );
-    setFilteredData(returnedData);
-  };
+    // let returnedData = currentItems?.filter(
+    //   (item: Record<string, any>) =>
+    //     (item.organization?.toLowerCase() || "").includes(
+    //       values.organization?.toLowerCase() || ""
+    //     ) &&
+    //     (item.fullName?.toLowerCase() || "").includes(
+    //       values.username?.toLowerCase() || ""
+    //     ) &&
+    //     (item.emailAddress?.toLowerCase() || "").includes(
+    //       values.email?.toLowerCase() || ""
+    //     ) &&
+    //     (item.createdAt?.toString().toLowerCase() || "").includes(
+    //       values.date?.toLowerCase() || ""
+    //     ) &&
+    //     (item.phoneNumber?.toLowerCase() || "").includes(
+    //       values.phoneNumber?.toLowerCase() || ""
+    //     ) &&
+    //     (item.userStatus?.toLowerCase() || "") ===
+    //       (values.status?.toLowerCase() || "")
+    // );
+    // setFilteredData(returnedData);
+    // console.log(
+    //   values,
+    //   returnedData,
+    //   currentItems &&
+    //     currentItems[0] &&
+    //     currentItems[0]?.userStatus.toLowerCase() ===
+    //       values.status.toLowerCase()
+    // );
+  }, [
+    currentItems,
+    // values.date,
+    // values.email,
+    // values.organization,
+    // values.phoneNumber,
+    // values.status,
+    // values.username,
+  ]);
+
+  // const handleDataFilter = () => {
+  //   let returnedData = currentItems?.filter(
+  //     (item: Record<string, any>) =>
+  //       (item.organization?.toLowerCase() || "").includes(
+  //         values.organization?.toLowerCase() || ""
+  //       ) &&
+  //       (item.fullName?.toLowerCase() || "").includes(
+  //         values.username?.toLowerCase() || ""
+  //       ) &&
+  //       (item.emailAddress?.toLowerCase() || "").includes(
+  //         values.email?.toLowerCase() || ""
+  //       ) &&
+  //       (item.createdAt?.toString().toLowerCase() || "").includes(
+  //         values.date?.toLowerCase() || ""
+  //       ) &&
+  //       // (item.phoneNumber?.toLowerCase() || "").includes(
+  //       //   values.phoneNumber?.toLowerCase() || ""
+  //       // ) &&
+  //       (item.userStatus?.toLowerCase() || "") ===
+  //         (values.status?.toLowerCase() || "")
+  //   );
+  //   setFilteredData(returnedData);
+  //   console.log(returnedData);
+  // };
 
   console.log(filteredData);
 
@@ -163,6 +229,9 @@ export const TableComponent: React.FC<TableComponentProps> = ({
                                       >
                                         <option value="">Select</option>
                                         <option value="Lendsqr">Lendsqr</option>
+                                        <option value="Lendstar">
+                                          Lendstar
+                                        </option>
                                         <option value="Irorun">Irorun</option>
                                       </select>
                                     </div>
@@ -180,7 +249,7 @@ export const TableComponent: React.FC<TableComponentProps> = ({
                                     <div className="table-filter-item">
                                       <label htmlFor="email">Email</label>
                                       <input
-                                        type="email"
+                                        type="text"
                                         name="email"
                                         id="email"
                                         placeholder="Email"
@@ -221,12 +290,12 @@ export const TableComponent: React.FC<TableComponentProps> = ({
                                         onChange={handleChange}
                                       >
                                         <option value="">Select</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">
                                           Inactive
                                         </option>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Blacklisted">
+                                        <option value="pending">Pending</option>
+                                        <option value="blacklisted">
                                           Blacklisted
                                         </option>
                                       </select>

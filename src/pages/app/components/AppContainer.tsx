@@ -1,23 +1,12 @@
-import { useMatch, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useMatch } from "react-router-dom";
+import { useState } from "react";
 import { AuthVerifyContainer } from "pages/auth/components";
-import { useAuth } from "store/auth";
 import { SideBarComponent, HeaderComponent } from ".";
 
 export const AppContainer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, token: access_token } = useAuth();
-  const navigate = useNavigate();
   const match = useMatch("/exporter/*");
   const page = match ? match.params["*"] : undefined;
-  const [active, setActive] = useState(false);
-  const width = window.innerWidth;
-
-  useEffect(() => {
-    if (width > 1000) {
-      setActive(false);
-    }
-  }, [width]);
 
   return (
     <div className="app">

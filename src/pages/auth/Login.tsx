@@ -1,14 +1,10 @@
-// import { PrimaryButton } from "components/buttons";
 import { AuthHeaderText, CustomPasswordInput, PrimaryInput } from "components";
-// import { AuthHeaderText, CustomPasswordInput } from "components/custom";
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginValidationSchema } from "validations/auth";
-import { usePageNotificationProvider } from "providers/pageNotificationProvider";
-import { useDispatch } from "react-redux";
-import { LoginPayload, setCredential, useLoginMutation } from "store/auth";
-import { resolveApiError } from "utilities/errorHandling";
+import { usePageNotificationProvider } from "providers/PageNotificationProvider";
+import { LoginPayload } from "store/auth";
 import Logo from "assets/images/logo.svg";
 import PabloIllustration from "assets/images/pablo-sign-in.svg";
 import { PrimaryButton } from "components/buttons";
@@ -16,6 +12,7 @@ import { PrimaryButton } from "components/buttons";
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { initNotification } = usePageNotificationProvider();
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
@@ -29,6 +26,11 @@ export const LoginPage = () => {
   const initLoginRequest = (payload?: LoginPayload) => {
     setIsLoading(true);
     setTimeout(() => {
+      localStorage.setItem("isLoggedIn", "true");
+      initNotification({
+        message: "Logged in succesfully",
+        scheme: "success",
+      });
       navigate("/dashboard");
     }, 2000);
   };

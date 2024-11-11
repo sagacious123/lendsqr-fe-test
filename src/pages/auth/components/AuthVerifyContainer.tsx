@@ -1,33 +1,24 @@
 // import { PrimaryLoader } from "components";
 import { PrimaryLoader } from "components/custom";
 import { useGeneralAppProvider } from "providers";
-import { useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "store/auth";
+import { useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
 export const AuthVerifyContainer = () => {
-  const { isLoading } = useAuth();
   const { primaryLoading } = useGeneralAppProvider();
+  const [isLoggedIn] = useState(
+    JSON.parse(localStorage.getItem("isLoggedIn")!) || false
+  );
 
-  // useEffect(() => {
-  // if (!user) {
-  //   navigate("/login", { state: { from: window.location.pathname } });
-  // }
-  // setTimeout(() => {
-  //   // if (user && !user?.em) redirectTo = "/verify/email";
-  //   setIsLoading(false);
-  // }, 2000);
-  // }, [user]);
-
-  // if (!user) {
-  //   return (
-  //     <Navigate
-  //       to="/login"
-  //       replace
-  //       state={{ from: window.location.pathname }}
-  //     />
-  //   );
-  // }
+  if (!isLoggedIn) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{ from: window.location.pathname }}
+      />
+    );
+  }
 
   return (
     <>

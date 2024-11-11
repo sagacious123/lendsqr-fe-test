@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import Loading from "react-fullscreen-loading";
-import { PageNotificationProvider } from "./pageNotificationProvider";
+import { PageNotificationProvider } from ".";
 
 export type CurrentDahboardType = "exporter" | "backer";
 
