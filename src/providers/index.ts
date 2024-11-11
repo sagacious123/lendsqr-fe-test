@@ -1,3 +1,3 @@
-export * from "./pageNotificationProvider";
-export * from "./chakraProviderLoader";
-export * from "./generalAppProvider";
+export * from "./PageNotificationProvider";
+export * from "./ChakraProviderLoader";
+export * from "./GeneralAppProvider";
