@@ -17,29 +17,31 @@ export const AppDashboardPage = () => {
   }, [users]);
 
   const handleDataFilter = (values: Record<string, any>) => {
-    console.log(values);
+    console.log(
+      values,
+      users![0]?.organization
+        ?.toLowerCase()
+        .includes(values.organization?.toLowerCase())
+    );
 
     let returnedData = users?.filter(
       (item: Record<string, any>) =>
+        (item.userStatus?.toLowerCase() || "") ===
+          (values.status?.toLowerCase() || "") &&
         (item.organization?.toLowerCase() || "").includes(
           values.organization?.toLowerCase() || ""
         ) &&
-        // (item.fullName?.toLowerCase() || "").includes(
-        //   values.username?.toLowerCase() || ""
-        // ) &&
-        // (item.emailAddress?.toLowerCase() || "").includes(
-        //   values.email?.toLowerCase() || ""
-        // ) &&
-        // (item.createdAt?.toString().toLowerCase() || "").includes(
-        //   values.date?.toLowerCase() || ""
-        // ) &&
-        // (item.phoneNumber?.toLowerCase() || "").includes(
-        //   values.phoneNumber?.toLowerCase() || ""
-        // ) &&
-        (item.userStatus?.toLowerCase() || "") ===
-          (values.status?.toLowerCase() || "")
+        (item.fullName?.toLowerCase() || "").includes(
+          values.username?.toLowerCase() || ""
+        ) &&
+        (item.emailAddress?.toLowerCase() || "").includes(
+          values.email?.toLowerCase() || ""
+        ) &&
+        (item.createdAt?.toString().toLowerCase() || "").includes(
+          values.date?.toLowerCase() || ""
+        ) &&
+        (item.phoneNumber || "").includes(values.phoneNumber || "")
     );
-    console.log(returnedData);
     setFilteredData((returnedData as any) || users);
   };
 

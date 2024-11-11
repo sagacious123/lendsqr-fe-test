@@ -228,11 +228,11 @@ export const TableComponent: React.FC<TableComponentProps> = ({
                                         onChange={handleChange}
                                       >
                                         <option value="">Select</option>
-                                        <option value="Lendsqr">Lendsqr</option>
-                                        <option value="Lendstar">
+                                        <option value="lendsqr">Lendsqr</option>
+                                        <option value="lendstar">
                                           Lendstar
                                         </option>
-                                        <option value="Irorun">Irorun</option>
+                                        <option value="irorun">Irorun</option>
                                       </select>
                                     </div>
                                     <div className="table-filter-item">

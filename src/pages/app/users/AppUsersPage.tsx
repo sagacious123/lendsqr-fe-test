@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MetricsCard } from "../components";
 import UsersMetricIcon from "assets/images/users-metric.svg";
 import ActiveUsersMetricIcon from "assets/images/active-users-metric.svg";
@@ -7,10 +7,44 @@ import UsersWithSavingsMetricIcon from "assets/images/users-with-savings-metric.
 import { Badge, PrimaryLoader, TableComponent } from "components";
 import moment from "moment";
 import { useGetAllUsersQuery, UsersList } from "store/users";
-import { useGeneralAppProvider } from "providers/GeneralAppProvider";
 
 export const AppUsersPage = () => {
   const { data: users, isLoading } = useGetAllUsersQuery({});
+  const [filteredData, setFilteredData] = useState<UsersList>([]);
+
+  useEffect(() => {
+    setFilteredData(users as UsersList);
+  }, [users]);
+
+  const handleDataFilter = (values: Record<string, any>) => {
+    console.log(
+      values,
+      users![0]?.organization
+        ?.toLowerCase()
+        .includes(values.organization?.toLowerCase())
+    );
+
+    let returnedData = users?.filter(
+      (item: Record<string, any>) =>
+        (item.userStatus?.toLowerCase() || "") ===
+          (values.status?.toLowerCase() || "") &&
+        (item.organization?.toLowerCase() || "").includes(
+          values.organization?.toLowerCase() || ""
+        ) &&
+        (item.fullName?.toLowerCase() || "").includes(
+          values.username?.toLowerCase() || ""
+        ) &&
+        (item.emailAddress?.toLowerCase() || "").includes(
+          values.email?.toLowerCase() || ""
+        ) &&
+        (item.createdAt?.toString().toLowerCase() || "").includes(
+          values.date?.toLowerCase() || ""
+        ) &&
+        (item.phoneNumber || "").includes(values.phoneNumber || "")
+    );
+    console.log(returnedData);
+    setFilteredData((returnedData as any) || users);
+  };
 
   return (
     <section className="app-dashboard-page px-3">
@@ -53,9 +87,10 @@ export const AppUsersPage = () => {
       </div>
       <div className="app-dashboard-table-container">
         <TableComponent
-          data={users as UsersList}
+          data={filteredData as UsersList}
           headings={usersTableHeadings}
           showActions={true}
+          handleDataFilter={handleDataFilter}
           // itemsPerPage={"6"}
           paginate={true}
           tableContainerClassName=""
