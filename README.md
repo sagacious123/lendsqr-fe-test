@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Lendsqr Dashboard Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a responsive, four-page dashboard application built using React, TypeScript, SCSS, Redux Toolkit, and Chakra UI. The application includes a Login page, Dashboard, User page, and User Details page, with functionality based on a Figma design.
 
-## Available Scripts
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Improvements & Decisions](#improvements--decisions)
+- [License](#license)
 
-In the project directory, you can run:
+## Features
+- **Login Page**: Validates user credentials and redirects to the Dashboard on successful login.
+- **Dashboard**: Displays key metrics and data pulled from a mock API.
+- **User Page**: Lists users retrieved from a mock API with pagination and filter options.
+- **User Details Page**: Displays details of a selected user, which are stored in local storage for persistence.
 
-### `yarn start`
+## Tech Stack
+- **React & TypeScript**: Component-based architecture with type safety to reduce errors.
+- **SCSS**: Allows clean, modular styles with nesting and variables.
+- **Redux Toolkit**: Manages API calls.
+- **Chakra UI**: Provides customizable, accessible UI components, ensuring consistency and mobile responsiveness.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Run `yarn` to install the necessary dependencies.
 
-### `yarn test`
+## Build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run `yarn build` to build the project.
 
-### `yarn build`
+## Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run `yarn start` to start the project.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
