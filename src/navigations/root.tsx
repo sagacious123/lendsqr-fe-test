@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import * as Pages from "pages";
 import ScrollToTop from "./ScrollToTop";
-import { GeneralAppProvider } from "providers/index";
+import { GeneralAppProvider } from "providers";
 
 export const RootNavigator = () => {
   return (
