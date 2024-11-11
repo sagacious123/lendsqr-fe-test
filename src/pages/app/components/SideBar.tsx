@@ -1,6 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React from "react";
-import Logo from "assets/images/logo.svg";
 
 import { ReactComponent as DashboardIcon } from "assets/images/home.svg";
 import { ReactComponent as UsersIcon } from "assets/images/users.svg";

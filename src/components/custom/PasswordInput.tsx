@@ -1,7 +1,6 @@
 // import { PrimaryInputProp } from "components/inputs";
 import { PrimaryInput, PrimaryInputProp } from "components/inputs/Default";
 import { useState } from "react";
-import { PiEyeLight, PiEyeClosedLight } from "react-icons/pi";
 
 export const CustomPasswordInput = ({ ...rest }: PrimaryInputProp) => {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,4 +1,4 @@
-import { IResponse, User } from "store/auth";
+import { User } from "store/auth";
 
 export type UsersList = User[];
 
