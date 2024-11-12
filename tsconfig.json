@@ -29,12 +29,13 @@
       "containers/*": ["./containers/*"],
       "providers/*": ["./providers/*"],
       "store/*": ["./store/*"],
+      "tables/*": ["./tables/*"],
       "pages/*": ["./pages/*"],
     }
   },
   "include": ["src"],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  // "references": [
+  //   { "path": "./tsconfig.app.json" },
+  //   { "path": "./tsconfig.node.json" }
+  // ]
 }
