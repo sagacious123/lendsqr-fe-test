@@ -1,13 +1,16 @@
-import { AuthHeaderText, CustomPasswordInput, PrimaryInput } from "components";
+import {
+  AuthHeaderText,
+  CustomPasswordInput,
+  PrimaryButton,
+  PrimaryInput,
+} from "components";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginValidationSchema } from "validations/auth";
 import { usePageNotificationProvider } from "providers/PageNotificationProvider";
-import { LoginPayload } from "store/auth";
 import Logo from "assets/images/logo.svg";
 import PabloIllustration from "assets/images/pablo-sign-in.svg";
-import { PrimaryButton } from "components/buttons";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -23,7 +26,7 @@ export const LoginPage = () => {
       onSubmit: () => initLoginRequest(),
     });
 
-  const initLoginRequest = (payload?: LoginPayload) => {
+  const initLoginRequest = () => {
     setIsLoading(true);
     setTimeout(() => {
       localStorage.setItem("isLoggedIn", "true");
